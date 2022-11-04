@@ -7,7 +7,9 @@ void maxNumberFinder();
 void areaFinder();
 void degreeConversion();
 void leapYearFinder();
-
+void twoPointsDist();
+void squareEquation();
+void myCalculator();
 
 int main()
 {   
@@ -37,13 +39,13 @@ void menu() {
             leapYearFinder();
             break;
         case '5':
-            // twoPointsDist();
+            twoPointsDist();
             break;
         case '6':
-            // squareEquation();
+            squareEquation();
             break;
         case '7':
-            // myCalculator();
+            myCalculator();
             break;
         default:
             cout << "ERROR ! Enter valid number. ";
@@ -64,6 +66,9 @@ void maxNumberFinder(){
         cout << "Max number is number one" << endl;
     }else if (numberTwo > numberThree) {
         cout << "Max number is number two" << endl;
+    }else if (numberOne == numberTwo && numberTwo == numberThree){
+        cout << "Numbers are equal! " << endl;
+        
     }else {
         cout << "Max number is number three" << endl;
     }
@@ -72,7 +77,7 @@ void maxNumberFinder(){
 void areaFinder() {
     
     cout << "\nწრეწირის ფართობის პოვნა: \n";
-    int radius;
+    float radius;
     float pi = 3.14;
     cout << "Enter circle radius: ";
     cin >> radius;
@@ -83,19 +88,22 @@ void degreeConversion() {
     cout << "\n გრადუსების კონვერტერი: ";
     
     float degrees;
-    cout << "\nEnter degrees: ";
-    cin >> degrees;
-    
     short input;
     float output;
-    cout << "Chose the conversion: \n celcius to fahrenheit type: 1\n fahrenheit to celcius type: 2 \n";
+    cout << "\nChose the conversion: \n celcius to fahrenheit type: 1\n fahrenheit to celcius type: 2 \n";
     cin >> input;
     if (input == 1) {
+        cout << "\nEnter degrees: ";
+        cin >> degrees;
         output = (degrees * 9/5 ) + 32;
         cout << degrees << " in fahrenheit is: "<< output << endl; 
     }else if (input == 2){
+        cout << "\nEnter degrees: ";
+        cin >> degrees;
         output = (degrees - 32) * 5/9;
         cout << degrees << " in celcius is: "<< output<< endl;
+    }else {
+        cout << "Enter valid option" << endl;
     }
 }
 
@@ -113,4 +121,57 @@ void leapYearFinder() {
     
 }
 
+void twoPointsDist() {
+    float x1, x2, y1, y2;
+    cout << "ორ წერტილს შორის მანძილის გამოთვლა "<< endl;
+    
+    cout << "\n Enter x1, y1, x2, y2 points (x1, y1) (x2, y2)\n Press Enter after every number." << endl;
+    cin >>x1 >> y1 >> x2 >> y2;
+    float distance = sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
+    cout << "Distance is: " << distance << endl;
+}
+
+void squareEquation(){
+    cout << "კვადრატული განტოლების ამომხსნელი "<<endl;
+    
+    cout << "\n To solve the quadratic equation enter a, b, c properties one after another\n Press Enter after every input"<< endl;
+    int a, b, c;
+    cin >> a >> b >> c;
+    int discriminant;
+    discriminant = sqrt(pow(b, 2) - 4*a*c);
+    int qdrx1, qdrx2;
+    qdrx1 = (-b + discriminant)/(2 * a);
+    qdrx2 = (-b - discriminant)/(2 *a);
+    cout << "Anwsers are: \n X1 = "<< qdrx1 << "\n X2 = "<< qdrx2 << endl;
+}
+
+void myCalculator() {
+    cout << "კალკულატორი"<<endl;
+    float numOne, numTwo;
+    char calcInput;
+    cout << "Enter number one: "<< endl;
+    cin >> numOne;
+    cout << "Enter number two: "<< endl;
+    cin >> numTwo;
+    cout << "Chose the operation: \n Type one of the following: '+', '-', 'x', '%'"<< endl;
+    cin >> calcInput;
+    switch(calcInput) {
+        case '+':
+            cout << "number one + number two is: "<< numOne + numTwo << endl;
+            break;
+        case '-':
+            cout << "number one - number two is: "<< numOne - numTwo << endl;
+            break;
+        case 'x':
+            cout << "number one x number two is: "<< numOne * numTwo << endl;
+            break;
+        case '%':
+            cout << "number one % number two is: "<< numOne / numTwo << endl;
+            break;
+        default:
+            cout << "Enter valid operator" << endl;
+            break;
+
+    }
+}
 
